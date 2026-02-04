@@ -29,7 +29,6 @@ function App() {
   // Dragging State
   const [draggingIdx, setDraggingIdx] = useState(null); // 0-3 corners, 4 center
   const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 }); // For center move
 
   // Refs
   const canvasRef = useRef(null);
@@ -129,6 +128,19 @@ function App() {
     }
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+        const url = URL.createObjectURL(file);
+        setBackgroundImg(url);
+    }
+  };
+
   const handleExport = async () => {
     if (!canvasRef.current) return;
 
@@ -164,8 +176,8 @@ function App() {
     // Default 200x400 in center
     const cx = w / 2;
     const cy = h / 2;
-    const dw = w * 0.2; // 20% width
-    const dh = h * 0.4;
+    const dw = w * 0.125; // 12.5% width (Total 25%)
+    const dh = h * 0.25;  // 25% height (Total 50%)
 
     setPoints([
       { x: cx - dw, y: cy - dh }, // TL
@@ -203,7 +215,11 @@ function App() {
         onUploadPhoto={() => fileInputRef.current?.click()}
       />
 
-      <main className="flex-1 relative flex flex-col h-full overflow-hidden bg-slate-100 items-center justify-center">
+      <main
+        className="flex-1 relative flex flex-col h-full overflow-hidden bg-slate-100 items-center justify-center"
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
         <input
           type="file"
           ref={fileInputRef}
