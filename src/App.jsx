@@ -176,8 +176,13 @@ function App() {
     // Default 200x400 in center
     const cx = w / 2;
     const cy = h / 2;
-    const dw = w * 0.125; // 12.5% width (Total 25%)
-    const dh = h * 0.25;  // 25% height (Total 50%)
+
+    // Set height to 50% of image height
+    const dh = h * 0.25; // Half-height (Total 50%)
+
+    // Set width based on standard door aspect ratio (approx 1:2.2)
+    // Width = Height / 2.2 => Half-Width = Half-Height / 2.2
+    const dw = dh / 2.2;
 
     setPoints([
       { x: cx - dw, y: cy - dh }, // TL
