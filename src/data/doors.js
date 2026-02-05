@@ -66,7 +66,7 @@ export const DOORS = [
     id: "ac1",
     name: "Acier Blindé",
     category: "Acier",
-    imageSrc: "https://placehold.co/300x600/404040/FFFFFF?text=Acier+Blindé",
+    imageSrc: "/images/doors/00-akita-20-acier-zilten-porte-entree-gris-7016-texture-300.jpg",
   },
   {
     id: "ac2",
