@@ -8,7 +8,7 @@ export function Sidebar({ selectedCategory, onSelectCategory, selectedDoor, onSe
 
   return (
     <aside className="w-[300px] h-full bg-white border-r border-gray-200 flex flex-col shrink-0 z-20 shadow-xl">
-      <div className="h-16 bg-blue-600 flex items-center px-6 text-white shadow-md shrink-0">
+      <div className="h-16 bg-orange-600 flex items-center px-6 text-white shadow-md shrink-0">
         <PanelLeft className="w-6 h-6 mr-3" />
         <h1 className="font-bold text-xl tracking-tight">Baies & Bastide</h1>
       </div>
@@ -22,13 +22,13 @@ export function Sidebar({ selectedCategory, onSelectCategory, selectedDoor, onSe
             className={clsx(
               "flex-1 py-4 text-sm font-semibold transition-all relative",
               selectedCategory === cat
-                ? "text-blue-600 bg-blue-50/50"
+                ? "text-orange-600 bg-orange-50/50"
                 : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
             )}
           >
             {cat}
             {selectedCategory === cat && (
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600"></div>
             )}
           </button>
         ))}
@@ -44,8 +44,8 @@ export function Sidebar({ selectedCategory, onSelectCategory, selectedDoor, onSe
               className={clsx(
                 "cursor-pointer rounded-xl border-2 overflow-hidden transition-all duration-200 aspect-[2/3] relative group bg-white shadow-sm",
                 selectedDoor?.id === door.id
-                  ? "border-blue-600 ring-4 ring-blue-50 shadow-blue-100 transform scale-[1.02]"
-                  : "border-transparent hover:border-blue-300 hover:shadow-md"
+                  ? "border-orange-600 ring-4 ring-orange-50 shadow-orange-100 transform scale-[1.02]"
+                  : "border-transparent hover:border-orange-300 hover:shadow-md"
               )}
             >
               <div className="w-full h-full p-2 flex items-center justify-center">
@@ -57,7 +57,7 @@ export function Sidebar({ selectedCategory, onSelectCategory, selectedDoor, onSe
               </div>
 
               {selectedDoor?.id === door.id && (
-                <div className="absolute top-2 right-2 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs shadow-sm">
+                <div className="absolute top-2 right-2 w-5 h-5 bg-orange-600 rounded-full flex items-center justify-center text-white text-xs shadow-sm">
                   ✓
                 </div>
               )}
